@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire Hamza Ibrahim — TWO BROTHERS TECH</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --neon: #00d4ff;
+    --neon2: #7b2fff;
+    --bg: #030508;
+    --bg2: #070c12;
+    --silver: #a8b2c0;
+    --white: #eef2f7;
+    --glass: rgba(255,255,255,0.03);
+    --glass-border: rgba(0,212,255,0.15);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--neon); border-radius: 2px; }
+ 
+  /* CURSOR */
+  .cursor, .cursor-follower {
+    position: fixed; border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+  }
+  .cursor { width: 8px; height: 8px; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
+  .cursor-follower {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(0,212,255,0.4);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+  .cursor-follower.hover { width: 56px; height: 56px; border-color: var(--neon); background: rgba(0,212,255,0.05); }
+ 
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(3,5,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,212,255,0.08);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem; font-weight: 800;
+    letter-spacing: 0.25em;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--silver);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px 18px;
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 40px;
+    background: var(--glass);
+    transition: all 0.3s;
+  }
+  .nav-back:hover { color: var(--neon); border-color: var(--neon); box-shadow: 0 0 15px rgba(0,212,255,0.15); }
+ 
+  /* HERO BANNER */
+  .hire-hero {
+    padding: 140px 60px 80px;
+    max-width: 1300px; margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .glow-orb {
+    position: absolute; border-radius: 50%;
+    pointer-events: none; filter: blur(80px); opacity: 0.1;
+  }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; color: var(--neon);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .section-tag::before {
+    content: ''; width: 24px; height: 1px;
+    background: var(--neon); box-shadow: 0 0 8px var(--neon);
+  }
+  .section-tag::after {
+    content: ''; width: 24px; height: 1px;
+    background: var(--neon); box-shadow: 0 0 8px var(--neon);
+  }
+  .hire-hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hire-hero h1 .glow {
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(0,212,255,0.4));
+  }
+  .hire-hero p {
+    font-size: 1.08rem; color: var(--silver);
+    line-height: 1.75; max-width: 580px;
+    margin: 0 auto 40px;
+  }
+  .availability-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(0,212,255,0.06);
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 40px; padding: 10px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--neon);
+    letter-spacing: 0.15em; margin-bottom: 60px;
+  }
+  .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #00ff88; box-shadow: 0 0 10px #00ff88; animation: blink 1.2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+ 
+  /* PROCESS STEPS */
+  .process-section { padding: 0 60px 100px; max-width: 1300px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .section-header p { color: var(--silver); font-size: 1rem; }
+ 
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 20px; position: relative; margin-bottom: 20px;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute; top: 44px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.3), transparent);
+    z-index: 0;
+  }
+  .step-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px; padding: 32px 24px;
+    text-align: center; position: relative;
+    transition: all 0.4s ease;
+    z-index: 1;
+  }
+  .step-card:hover {
+    border-color: rgba(0,212,255,0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(0,212,255,0.1), 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .step-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(123,47,255,0.12));
+    border: 1px solid rgba(0,212,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800;
+    color: var(--neon); margin: 0 auto 20px;
+    box-shadow: 0 0 20px rgba(0,212,255,0.15);
+  }
+  .step-icon { font-size: 1.6rem; margin-bottom: 14px; display: block; }
+  .step-card h4 {
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    margin-bottom: 10px; color: var(--white);
+  }
+  .step-card p { font-size: 0.82rem; color: var(--silver); line-height: 1.65; }
+ 
+  /* SERVICES */
+  .services-section { padding: 0 60px 100px; max-width: 1300px; margin: 0 auto; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px; padding: 36px 30px;
+    transition: all 0.4s ease; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--neon), var(--neon2));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-6px); box-shadow: 0 0 40px rgba(0,212,255,0.1), 0 20px 50px rgba(0,0,0,0.4); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 24px;
+    background: rgba(0,212,255,0.06);
+    border: 1px solid rgba(0,212,255,0.15);
+  }
+  .service-card h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700;
+    margin-bottom: 12px; color: var(--white);
+  }
+  .service-card p { font-size: 0.85rem; color: var(--silver); line-height: 1.7; margin-bottom: 24px; }
+  .service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.8rem; color: var(--silver);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .service-features li::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--neon); box-shadow: 0 0 6px var(--neon); flex-shrink: 0;
+  }
+  .service-price {
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; color: var(--neon);
+    letter-spacing: 0.15em;
+  }
+ 
+  /* DIVIDER */
+  .line-divider {
+    height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.15), transparent);
+    margin: 0 60px 80px;
+  }
+ 
+  /* PRICING */
+  .pricing-section { padding: 0 60px 100px; max-width: 1300px; margin: 0 auto; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pricing-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px; padding: 40px 32px;
+    display: flex; flex-direction: column;
+    transition: all 0.4s ease; position: relative; overflow: hidden;
+  }
+  .pricing-card.featured {
+    background: linear-gradient(145deg, rgba(0,212,255,0.06), rgba(123,47,255,0.06));
+    border-color: rgba(0,212,255,0.35);
+    box-shadow: 0 0 50px rgba(0,212,255,0.12), 0 0 100px rgba(123,47,255,0.06);
+    transform: scale(1.03);
+  }
+  .pricing-card:not(.featured):hover { transform: translateY(-6px); border-color: rgba(0,212,255,0.2); box-shadow: 0 0 30px rgba(0,212,255,0.08); }
+  .featured-badge {
+    position: absolute; top: 20px; right: 20px;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    color: #000; font-weight: 700; font-size: 0.62rem;
+    letter-spacing: 0.1em; padding: 4px 12px; border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pricing-tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; color: var(--neon);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pricing-card h3 {
+    font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .pricing-card .price {
+    font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin: 16px 0 4px;
+  }
+  .pricing-card .price-note { font-size: 0.78rem; color: var(--silver); margin-bottom: 28px; font-family: 'JetBrains Mono', monospace; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .pricing-features li {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.85rem; color: var(--silver);
+  }
+  .pricing-features li i { color: var(--neon); font-size: 0.75rem; width: 14px; }
+  .pricing-features li.muted { opacity: 0.4; }
+  .pricing-features li.muted i { color: var(--silver); }
+  .btn-hire {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 14px;
+    margin-top: 32px;
+    border-radius: 50px; font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;
+    cursor: pointer; text-decoration: none; transition: all 0.3s;
+    border: none;
+  }
+  .btn-hire.outline {
+    background: transparent;
+    border: 1px solid rgba(0,212,255,0.3);
+    color: var(--white);
+  }
+  .btn-hire.outline:hover { border-color: var(--neon); color: var(--neon); box-shadow: 0 0 20px rgba(0,212,255,0.15); transform: translateY(-2px); }
+  .btn-hire.solid {
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    color: #000;
+    box-shadow: 0 0 30px rgba(0,212,255,0.3);
+  }
+  .btn-hire.solid:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,255,0.5); }
+ 
+  /* CTA */
+  .cta-section { padding: 0 60px 120px; max-width: 1300px; margin: 0 auto; }
+  .cta-box {
+    background: linear-gradient(145deg, rgba(0,212,255,0.05), rgba(123,47,255,0.08));
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 28px; padding: 70px 60px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .cta-box h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin-bottom: 16px; position: relative; z-index: 1;
+  }
+  .cta-box p { color: var(--silver); font-size: 1rem; margin-bottom: 40px; position: relative; z-index: 1; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    border: none; border-radius: 50px;
+    color: #000; font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem; cursor: pointer; text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 0 30px rgba(0,212,255,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,255,0.5); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid rgba(0,212,255,0.3);
+    border-radius: 50px; color: var(--white); font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem; cursor: pointer; text-decoration: none;
+    transition: all 0.3s; backdrop-filter: blur(10px);
+  }
+  .btn-secondary:hover { border-color: var(--neon); color: var(--neon); box-shadow: 0 0 25px rgba(0,212,255,0.15); transform: translateY(-2px); }
+ 
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 30px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: 0.2em; background: linear-gradient(135deg, var(--neon), var(--neon2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.2); font-family: 'JetBrains Mono', monospace; }
+ 
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
+  @media(max-width:1024px) {
+    .steps-grid { grid-template-columns: repeat(2,1fr); }
+    .services-grid { grid-template-columns: repeat(2,1fr); }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card.featured { transform: none; }
+    nav { padding: 16px 24px; }
+    .hire-hero, .process-section, .services-section, .pricing-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .line-divider { margin: 0 24px 60px; }
+    .cta-box { padding: 50px 30px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+  @media(max-width:640px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps-grid::before { display: none; }
+  }
+</style>
+</head>
+<body>
+ 
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursorFollower"></div>
+ 
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">TWO BROTHERS TECH</a>
+  <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+</nav>
+ 
+<!-- HERO -->
+<div class="hire-hero reveal" id="heroSection">
+  <div class="glow-orb" style="width:500px;height:500px;top:-100px;left:50%;transform:translateX(-50%);background:var(--neon);"></div>
+  <div class="glow-orb" style="width:300px;height:300px;top:200px;right:-80px;background:var(--neon2);"></div>
+  <div class="section-tag">Open for Work</div>
+  <h1>Let's Work<br><span class="glow">Together.</span></h1>
+  <p>I'm Hamza Ibrahim — a full-stack developer available for freelance projects, contracts, and collaborations. Here's exactly how to hire me and what I can build for you.</p>
+  <div class="availability-badge">
+    <div class="avail-dot"></div>
+    AVAILABLE NOW — ACCEPTING NEW CLIENTS
+  </div>
+</div>
+ 
+<!-- HOW TO HIRE (PROCESS) -->
+<div class="process-section">
+  <div class="section-header reveal">
+    <div class="section-tag">The Process</div>
+    <h2>How to Hire Me</h2>
+    <p>A simple 4-step process from first contact to final delivery</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <span class="step-icon">💬</span>
+      <h4>Reach Out</h4>
+      <p>Send me a message via the contact form or email me directly at <strong style="color:var(--neon)">hamza@twobrostech.io</strong>. Tell me about your project, timeline, and budget.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <span class="step-icon">🎯</span>
+      <h4>Discovery Call</h4>
+      <p>We hop on a 30-minute call to align on goals, scope, and expectations. I'll ask the right questions to fully understand your vision.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <span class="step-icon">📋</span>
+      <h4>Proposal & Contract</h4>
+      <p>I send a detailed proposal with timeline, milestones, and pricing. Once agreed, a contract is signed and we kick off with a deposit.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">04</div>
+      <span class="step-icon">🚀</span>
+      <h4>Build & Deliver</h4>
+      <p>I build, you review. Weekly updates, open communication, and on-time delivery. Final handoff includes full code ownership.</p>
+    </div>
+  </div>
+</div>
+ 
+<div class="line-divider"></div>
+ 
+<!-- SERVICES -->
+<div class="services-section">
+  <div class="section-header reveal">
+    <div class="section-tag">What I Do</div>
+    <h2>Jobs I'm <span style="background:linear-gradient(135deg,var(--neon),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Available For</span></h2>
+    <p>From MVPs to full-scale platforms — here's what I build</p>
+  </div>
+  <div class="services-grid">
+ 
+    <div class="service-card reveal">
+      <div class="service-icon">⚡</div>
+      <h3>Web Development</h3>
+      <p>Fast, scalable, and pixel-perfect websites and web applications built with modern frameworks and best practices.</p>
+      <ul class="service-features">
+        <li>React / Next.js Applications</li>
+        <li>Landing Pages & Marketing Sites</li>
+        <li>SaaS Platforms & Dashboards</li>
+        <li>E-commerce Stores</li>
+        <li>Performance Optimization</li>
+      </ul>
+      <div class="service-price">// STARTS AT $500 / PROJECT</div>
+    </div>
+ 
+    <div class="service-card reveal">
+      <div class="service-icon">🔧</div>
+      <h3>Full-Stack Engineering</h3>
+      <p>End-to-end development covering both frontend and backend — from databases to APIs to polished UIs.</p>
+      <ul class="service-features">
+        <li>Node.js / Express REST APIs</li>
+        <li>Database Design (MongoDB, SQL)</li>
+        <li>Authentication & Auth Systems</li>
+        <li>Third-party API Integrations</li>
+        <li>Cloud Deployment (AWS / Vercel)</li>
+      </ul>
+      <div class="service-price">// STARTS AT $800 / PROJECT</div>
+    </div>
+ 
+    <div class="service-card reveal">
+      <div class="service-icon">🎨</div>
+      <h3>UI/UX Design & Dev</h3>
+      <p>Beautiful, user-focused interfaces designed in Figma and implemented with obsessive attention to detail.</p>
+      <ul class="service-features">
+        <li>Figma Mockups & Prototypes</li>
+        <li>Design Systems & Components</li>
+        <li>Responsive Mobile-First Design</li>
+        <li>Micro-animations & Interactions</li>
+        <li>Brand Identity & Style Guides</li>
+      </ul>
+      <div class="service-price">// STARTS AT $400 / PROJECT</div>
+    </div>
+ 
+    <div class="service-card reveal">
+      <div class="service-icon">🌐</div>
+      <h3>3D Web Experiences</h3>
+      <p>Immersive, interactive 3D experiences for the web using Three.js and WebGL that set your brand apart.</p>
+      <ul class="service-features">
+        <li>Three.js / WebGL Scenes</li>
+        <li>3D Product Configurators</li>
+        <li>Interactive Portfolios</li>
+        <li>Particle Systems & Shaders</li>
+        <li>Animation & Storytelling</li>
+      </ul>
+      <div class="service-price">// STARTS AT $700 / PROJECT</div>
+    </div>
+ 
+    <div class="service-card reveal">
+      <div class="service-icon">📱</div>
+      <h3>Mobile App Development</h3>
+      <p>Cross-platform mobile applications built with React Native, delivering native performance on iOS and Android.</p>
+      <ul class="service-features">
+        <li>React Native (iOS & Android)</li>
+        <li>Firebase / Supabase Backend</li>
+        <li>App Store Deployment</li>
+        <li>Push Notifications & Auth</li>
+        <li>Offline-first Architecture</li>
+      </ul>
+      <div class="service-price">// STARTS AT $1,200 / PROJECT</div>
+    </div>
+ 
+    <div class="service-card reveal">
+      <div class="service-icon">🤖</div>
+      <h3>AI / Automation Tools</h3>
+      <p>Integrate AI capabilities and automate workflows — from OpenAI-powered tools to custom scripts and bots.</p>
+      <ul class="service-features">
+        <li>OpenAI / LLM Integration</li>
+        <li>Chatbots & AI Assistants</li>
+        <li>Workflow Automation Scripts</li>
+        <li>Data Scraping & Processing</li>
+        <li>Custom API Wrappers</li>
+      </ul>
+      <div class="service-price">// STARTS AT $600 / PROJECT</div>
+    </div>
+ 
+  </div>
+</div>
+ 
+<div class="line-divider"></div>
+ 
+<!-- PRICING -->
+<div class="pricing-section">
+  <div class="section-header reveal">
+    <div class="section-tag">Pricing</div>
+    <h2>Simple, <span style="background:linear-gradient(135deg,var(--neon),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Transparent</span> Plans</h2>
+    <p>Choose the engagement model that fits your needs</p>
+  </div>
+  <div class="pricing-grid">
+ 
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Starter</div>
+      <h3>Quick Launch</h3>
+      <div class="price">$500</div>
+      <div class="price-note">// ONE-TIME PROJECT FEE</div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> Landing Page or Simple Site</li>
+        <li><i class="fas fa-check"></i> Responsive Design</li>
+        <li><i class="fas fa-check"></i> 1-Week Delivery</li>
+        <li><i class="fas fa-check"></i> 2 Revision Rounds</li>
+        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+        <li class="muted"><i class="fas fa-times"></i> Custom Backend</li>
+        <li class="muted"><i class="fas fa-times"></i> CMS Integration</li>
+      </ul>
+      <a href="index.html#contact" class="btn-hire outline"><i class="fas fa-bolt"></i> Get Started</a>
+    </div>
+ 
+    <div class="pricing-card featured reveal">
+      <div class="featured-badge">MOST POPULAR</div>
+      <div class="pricing-tier">Pro</div>
+      <h3>Full Product</h3>
+      <div class="price">$1,500</div>
+      <div class="price-note">// ONE-TIME PROJECT FEE</div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> Full Web App or Platform</li>
+        <li><i class="fas fa-check"></i> Frontend + Backend</li>
+        <li><i class="fas fa-check"></i> 3–4 Week Delivery</li>
+        <li><i class="fas fa-check"></i> Unlimited Revisions</li>
+        <li><i class="fas fa-check"></i> Database & Auth</li>
+        <li><i class="fas fa-check"></i> Deployment & Hosting Setup</li>
+        <li><i class="fas fa-check"></i> 30-Day Post-Launch Support</li>
+      </ul>
+      <a href="index.html#contact" class="btn-hire solid"><i class="fas fa-rocket"></i> Hire Me Now</a>
+    </div>
+ 
+    <div class="pricing-card reveal">
+      <div class="pricing-tier">Retainer</div>
+      <h3>Ongoing Partner</h3>
+      <div class="price">$800<span style="font-size:1.2rem;color:var(--silver)">/mo</span></div>
+      <div class="price-note">// MONTHLY RETAINER</div>
+      <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 40 Hours / Month</li>
+        <li><i class="fas fa-check"></i> Priority Response</li>
+        <li><i class="fas fa-check"></i> Ongoing Development</li>
+        <li><i class="fas fa-check"></i> Bug Fixes & Maintenance</li>
+        <li><i class="fas fa-check"></i> Weekly Progress Reports</li>
+        <li><i class="fas fa-check"></i> Slack / Discord Access</li>
+        <li><i class="fas fa-check"></i> Cancel Anytime</li>
+      </ul>
+      <a href="index.html#contact" class="btn-hire outline"><i class="fas fa-handshake"></i> Let's Partner</a>
+    </div>
+ 
+  </div>
+</div>
+ 
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-box reveal">
+    <h2>Ready to Build<br><span style="background:linear-gradient(135deg,var(--neon),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Something Great?</span></h2>
+    <p>Don't wait — I only take on 2–3 projects at a time to ensure quality. Spots fill fast.</p>
+    <div class="cta-btns">
+      <a href="index.html#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Send a Message</a>
+      <a href="index.html#projects" class="btn-secondary"><i class="fas fa-layer-group"></i> See My Work First</a>
+    </div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">TWO BROTHERS TECH</div>
+  <div class="footer-copy">© 2026 Hamza Ibrahim. Let's build together.</div>
+</footer>
+ 
+<script>
+// CURSOR
+(function() {
+  const cur = document.getElementById('cursor');
+  const fol = document.getElementById('cursorFollower');
+  let fx = 0, fy = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; cur.style.left = cx+'px'; cur.style.top = cy+'px'; });
+  document.querySelectorAll('a,button,.service-card,.step-card,.pricing-card').forEach(el => {
+    el.addEventListener('mouseenter', () => fol.classList.add('hover'));
+    el.addEventListener('mouseleave', () => fol.classList.remove('hover'));
+  });
+  function animFol() {
+    fx += (cx - fx) * 0.12; fy += (cy - fy) * 0.12;
+    fol.style.left = fx+'px'; fol.style.top = fy+'px';
+    requestAnimationFrame(animFol);
+  }
+  animFol();
+})();
+ 
+// SCROLL REVEALS
+(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+ 
+// Stagger child reveals
+document.querySelectorAll('.steps-grid, .services-grid, .pricing-grid').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    child.style.transitionDelay = (i * 0.1) + 's';
+  });
+});
+</script>
+</body>
+</html>
